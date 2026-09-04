@@ -13,7 +13,9 @@ export default function Home({ name }: Props) {
       <Card className="max-w-md">
         <CardHeader>
           <CardTitle>Hello, {name}!</CardTitle>
-          <CardDescription>Rails 8, Inertia.js, React, TypeScript and Tailwind CSS.</CardDescription>
+          <CardDescription>
+            Rails 8, Inertia.js, React, TypeScript and Tailwind CSS.
+          </CardDescription>
         </CardHeader>
         <CardContent>
           <Button asChild>

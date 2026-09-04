@@ -2,7 +2,8 @@ import { usePage } from "@inertiajs/react";
 import { cn } from "@/lib/utils";
 
 const styles = {
-  notice: "border-emerald-200 bg-emerald-50 text-emerald-900 dark:border-emerald-900 dark:bg-emerald-950 dark:text-emerald-100",
+  notice:
+    "border-emerald-200 bg-emerald-50 text-emerald-900 dark:border-emerald-900 dark:bg-emerald-950 dark:text-emerald-100",
   alert: "border-destructive/30 bg-destructive/10 text-destructive",
 } as const;
 
