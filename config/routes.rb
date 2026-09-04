@@ -14,5 +14,10 @@ Rails.application.routes.draw do
     get "(*path)", to: redirect { |params, req| "#{req.protocol}localhost:#{req.port}/#{params[:path]}" }
   end
 
+  # Error pages rendered via config.exceptions_app
+  match "/404", to: "errors#not_found", via: :all
+  match "/422", to: "errors#unprocessable_content", via: :all
+  match "/500", to: "errors#internal_server_error", via: :all
+
   root "home#index"
 end

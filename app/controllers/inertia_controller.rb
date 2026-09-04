@@ -1,7 +1,8 @@
 # frozen_string_literal: true
 
+# Base controller for pages rendered with Inertia.
+# Put data shared with every Inertia response here.
+# see https://inertia-rails.dev/guide/shared-data
 class InertiaController < ApplicationController
-  # Share data with all Inertia responses
-  # see https://inertia-rails.dev/guide/shared-data
-  #   inertia_share user: -> { Current.user&.as_json(only: [:id, :name, :email]) }
+  inertia_share app: -> { { name: Rails.application.config.x.app_name } }
 end

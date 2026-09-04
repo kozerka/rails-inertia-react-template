@@ -8,4 +8,10 @@ class HomeControllerTest < ActionDispatch::IntegrationTest
     assert_inertia_component "home/index"
     assert_inertia_props name: "World"
   end
+
+  test "shares the application name" do
+    get root_url
+
+    assert_inertia_props app: { name: Rails.application.config.x.app_name }
+  end
 end
