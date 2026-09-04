@@ -16,6 +16,12 @@ module RailsInertiaReactTemplate
     # Common ones are `templates`, `generators`, or `middleware`, for example.
     config.autoload_lib(ignore: %w[assets tasks])
 
+    # Human-readable application name used in the layout and shared with the frontend.
+    config.x.app_name = "Rails Inertia React Template"
+
+    # Render error pages (404, 422, 500) through the router so they use the Inertia layout.
+    config.exceptions_app = routes
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
