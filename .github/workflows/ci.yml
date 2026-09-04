@@ -23,7 +23,35 @@ jobs:
       
       - name: Scan for known security vulnerabilities in gems used
         run: bin/bundler-audit
-      
+
+  scan_js:
+    runs-on: ubuntu-latest
+    # The npm advisories endpoint is occasionally unavailable, so this job reports
+    # but does not block. Dependabot security alerts remain the source of truth.
+    continue-on-error: true
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          cache: npm
+
+      - name: Install JavaScript dependencies
+        run: npm ci
+
+      - name: Scan for known security vulnerabilities in JavaScript dependencies
+        run: |
+          for attempt in 1 2 3; do
+            npm audit --audit-level=high && exit 0
+            echo "npm audit failed (attempt $attempt), retrying in 30s"
+            sleep 30
+          done
+          exit 1
+
   lint:
     runs-on: ubuntu-latest
     env:
@@ -49,6 +77,28 @@ jobs:
 
       - name: Lint code for consistent style
         run: bin/rubocop -f github
+
+  lint_js:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v6
+
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version-file: .node-version
+          cache: npm
+
+      - name: Install JavaScript dependencies
+        run: npm ci
+
+      - name: Lint and format JavaScript with Biome
+        run: npm run lint
+
+      - name: Type-check TypeScript
+        run: npm run check
 
   test:
     runs-on: ubuntu-latest
