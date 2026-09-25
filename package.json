@@ -25,7 +25,7 @@
     "shadcn": "^4.21.0"
   },
   "devDependencies": {
-    "@biomejs/biome": "2.5.12",
+    "@biomejs/biome": "2.5.14",
     "@inertiajs/core": "^3.7.0",
     "@inertiajs/vite": "^3.7.0",
     "@tailwindcss/typography": "^0.5.20",
