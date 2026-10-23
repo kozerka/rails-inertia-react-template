@@ -5,7 +5,7 @@ gem "rails", "~> 8.1.3", ">= 8.1.3.1"
 # The modern asset pipeline for Rails [https://github.com/rails/propshaft]
 gem "propshaft"
 # Inertia.js adapter for Rails [https://inertia-rails.dev]
-gem "inertia_rails", "~> 3.22"
+gem "inertia_rails", "~> 3.23"
 # Vite integration for Rails [https://vite-ruby.netlify.app]
 gem "vite_rails", "~> 3.11"
 # Use postgresql as the database for Active Record
